@@ -10,12 +10,16 @@ class CountrySerializer(serializers.ModelSerializer):
 
 
 class ManufacturerSerializer(serializers.ModelSerializer):
+    country = serializers.SlugRelatedField(slug_field='name', queryset=Country.objects.all())
+
     class Meta:
         model = Manufacturer
         fields = '__all__'
 
 
 class CarSerializer(serializers.ModelSerializer):
+    manufacturer = serializers.SlugRelatedField(slug_field='name', queryset=Manufacturer.objects.all())
+
     class Meta:
         model = Car
         fields = '__all__'
