@@ -15,8 +15,8 @@ Choice model -> choice format (format=:csv or xlsx) ->
 
 @api_view(['GET'])
 def export_data(request):
+    fmt = request.GET.get('file')
     model_name = request.GET.get('model')
-    fmt = request.GET.get('format', 'csv')  # default CSV
 
     # Selecting a model by name
     models_dict = {
@@ -37,6 +37,8 @@ def export_data(request):
 
     # We get a list of all model fields
     fields = [f.name for f in model._meta.fields]
+
+    # return HttpResponse(f"Export request received - Model: {model_name}, Format: {fmt}")
 
     # We form it through the standard csv module
     if fmt == 'csv':
