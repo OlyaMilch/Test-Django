@@ -36,6 +36,8 @@ PUT-запрос:
 Так же в приложении реализован экспорт данных в .cvs и в .xlsx.
 Все делается через запросы:
 http://127.0.0.1:8000/api/export/?model=cars&file=xlsx
+
+
 http://127.0.0.1:8000/api/export/?model=cars&file=cvs
 
 model= <-- сюда подставляется любая из 4-х моделей (manufacturers, cars, comments, countries).
